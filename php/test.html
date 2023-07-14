@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Off-Canvas Menu</title>
+  <style>
+    /* Off-canvas menu style */
+    .offcanvas {
+      width: 300px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -300px;
+      background-color: #f1f1f1;
+      overflow-x: hidden;
+      padding-top: 60px;
+      transition: 0.3s;
+    }
+
+    .offcanvas.open {
+      left: 0;
+    }
+
+    .offcanvas .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Content style */
+    .content {
+      margin-left: 300px; /* Width of the off-canvas menu */
+      transition: 0.3s;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var offcanvas = $('.offcanvas');
+      var content = $('.content');
+
+      // Open the off-canvas menu
+      $('#openMenu').click(function() {
+        offcanvas.addClass('open');
+        content.css('margin-left', '0');
+      });
+
+      // Close the off-canvas menu
+      $('#closeMenu').click(function() {
+        offcanvas.removeClass('open');
+        content.css('margin-left', '0');
+      });
+
+      // Load content when Button 1 is pressed
+      $('#button1').click(function() {
+        content.load('regestration.php');
+      });
+
+      // Load content when Button 2 is pressed
+      $('#button2').click(function() {
+        content.load('add_son.php');
+      });
+
+      // Load content when Button 3 is pressed
+      $('#button3').click(function() {
+        content.load('button3_content.html');
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Off-canvas menu -->
+  <div class="offcanvas">
+    <span class="close-btn">&times;</span>
+    <h2>Menu</h2>
+    <ul>
+      <li><button id="button1">Button 1</button></li>
+      <li><button id="button2">Button 2</button></li>
+      <li><button id="button3">Button 3</button></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>Main Content</h1>
+  </div>
+
+  <script>
+    // Toggle off-canvas menu
+    $('.close-btn').click(function() {
+      $('.offcanvas').removeClass('open');
+      $('.content').css('margin-left', '0');
+    });
+  </script>
+</body>
+</html>
